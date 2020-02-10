@@ -27,20 +27,56 @@ header{
 
 figure1 img{
     float: left;
-    width:500px;
+    width:600px;
     height: auto;
     padding-top: 20px;
 }
 
 figure2 img{
     float: right;
-    width:400px;
+    width:500px;
     height: auto;
     padding-top: 20px;
+}
+figure3 img{
+    float: left;
+    padding-top: 20px;
+    width: 800px;
+    height: auto;
+}
+
+div2 {
+    float: none;
+    text-align: center;
+    font-size: 1.3em;
 }
 
 div {
     float: none;
     text-align: center;
     font-size: 1.3em;
+}
+
+figure4 img{
+    float: left;
+    padding-top: 20px;
+    width: 700px;
+    height: auto;
+}
+
+a1 {
+    float: right;
+}
+
+div3 {
+    float: none;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+figure5 img{
+    float: left;
+    padding-top: 20px;
+    width: 800px;
+    height: auto;
 }
