@@ -1,0 +1,31 @@
+h1{
+    text-align: center;
+    font-family: cursive;
+    font-size: 4em;
+    margin-bottom: 5px;
+    margin-top: 0px;
+    border-style: groove;
+}
+
+body{
+    background-color: darksalmon;
+    font-family: cursive;
+    font-size: 1.5em;
+    
+}
+
+form{
+    float: left;
+    margin: 10px;
+    text-transform: none;
+}
+
+input{
+    width: auto;
+    height: 25px;
+}
+
+select{
+    height: 30px;
+    width: auto;
+}
