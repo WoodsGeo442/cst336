@@ -23,25 +23,25 @@ h1{
 #first{
     width: 350px;
     height: auto;
-    border-radius: 50px;
+    border-radius: 25px;
 }
 
 #second{
     width: 350px;
     height: auto;
-    border-radius: 50px;
+    border-radius: 25px;
 }
 
 #third{
     width: 350px;
     height: auto;
-    border-radius: 50px;
+    border-radius: 25px;
 }
 
 #fourth{
     width: 350px;
     height: auto;
-    border-radius: 50px;
+    border-radius: 25px;
 }
 
 .column{
