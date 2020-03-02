@@ -1,4 +1,4 @@
-var keywords = ["dog", "volleyball", "cats", "beach", "college"];
+var keywords = ["dog", "city", "cats", "park", "college"];
 let randomKeywords = Math.floor(Math.random() * 5);
 
 let randomindex1 = Math.floor(Math.random() * 20);
