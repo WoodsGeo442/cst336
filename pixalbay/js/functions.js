@@ -1,10 +1,10 @@
 var keywords = ["dog", "volleyball", "cats", "beach", "college"];
 let randomKeywords = Math.floor(Math.random() * 5);
 
-let randomindex1 = Math.floor(Math.random() * 50);
-let randomindex2 = Math.floor(Math.random() * 50);
-let randomindex3 = Math.floor(Math.random() * 50);
-let randomindex4 = Math.floor(Math.random() * 50);
+let randomindex1 = Math.floor(Math.random() * 20);
+let randomindex2 = Math.floor(Math.random() * 20);
+let randomindex3 = Math.floor(Math.random() * 20);
+let randomindex4 = Math.floor(Math.random() * 20);
 
 
 $(document).ready(function(){
