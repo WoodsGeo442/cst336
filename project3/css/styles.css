@@ -12,13 +12,13 @@ h1{
 
 .container {
     border: black;
-    background-color: darkorange;
+    background-color: lightseagreen;
     margin-top: 10px;
     padding-top: 10px;
     border-style: dashed;
     text-align: center;
     font-family: cursive;
-    border-radius: 10%;
+    border-radius: 25%;
     font-size: 25px;
 }
 
