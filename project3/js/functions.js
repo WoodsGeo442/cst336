@@ -17,7 +17,6 @@ $("#searchName").submit(function(e){
         $("#gender").html("Female");
         $("#genderImg").attr('src', "img/femaleSymbol.png");
       }
-      
     }
   });
 });
