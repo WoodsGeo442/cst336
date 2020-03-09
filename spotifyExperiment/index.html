@@ -1,44 +1,30 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Spotify Web Playback SDK Quick Start Tutorial</title>
-  <link href="css/styles.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-  <h1>Spotify Web Playback SDK Quick Start Tutorial</h1>
-  <h2>Open your console log: <code>View > Developer > JavaScript Console</code></h2>
-
-  <script src="https://sdk.scdn.co/spotify-player.js"></script>
-  <script>
-    window.onSpotifyWebPlaybackSDKReady = () => {
-      const token = '97e5b261e51e4705a81da070cf31764c';
-      const player = new Spotify.Player({
-        name: 'Web Playback SDK Quick Start Player',
-        getOAuthToken: cb => { cb(token); }
-      });
-
-      // Error handling
-      player.addListener('initialization_error', ({ message }) => { console.error(message); });
-      player.addListener('authentication_error', ({ message }) => { console.error(message); });
-      player.addListener('account_error', ({ message }) => { console.error(message); });
-      player.addListener('playback_error', ({ message }) => { console.error(message); });
-
-      // Playback status updates
-      player.addListener('player_state_changed', state => { console.log(state); });
-
-      // Ready
-      player.addListener('ready', ({ device_id }) => {
-        console.log('Ready with Device ID', device_id);
-      });
-
-      // Not Ready
-      player.addListener('not_ready', ({ device_id }) => {
-        console.log('Device ID has gone offline', device_id);
-      });
-
-      // Connect to the player!
-      player.connect();
-    };
-  </script>
-</body>
+<html> 
+    <head>
+        <meta charset=”utf-8” />
+        <title> Geoffrey Woods: Third-Party API with BehindTheName </title>
+        <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body class="main">
+        <h1> Pixabay Image Search </h1>
+        
+        <form id="searchName" class="container" method="get">
+            Keyword: <input type="text" id="word" name="word"><br>
+            <input type="submit" id="submit" value="Search">
+            <br><br>
+        </form>
+        <div class="row justify-content-center">
+            <div class="column">
+                <nobr>Likes: </nobr>
+                <span id="likesPic1"></span>
+                <br>
+                <img src="" id="first">
+            </div>
+            
+        </div>
+        <script src="js/functions.js"></script>
+    </body>
+    
 </html>

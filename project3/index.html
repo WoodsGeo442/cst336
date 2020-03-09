@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html> 
     <head>
-        <meta charset=”utf-8” />
-        <title> Geoffrey Woods: Third-Party API with Pixabay </title>
+        <meta charset="utf-8" />
+        <title> Geoffrey Woods: Third-Party API with BehindTheName </title>
         <link href="css/styles.css" rel="stylesheet" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
     </head>
     <body class="main">
-        <h1> Pixabay Image Search </h1>
-        
-        <form id="searchImage" class="container" method="get">
+        <h1> Behind the Name </h1>
+        <form id="searchName" class="container" method="get">
             Keyword: <input type="text" id="word" name="word"><br>
             <input type="submit" id="submit" value="Search">
             <br><br>
         </form>
         <div class="row justify-content-center">
-            
-            
+            <div class="column">
+                <nobr>Name: </nobr>
+                <span id="printName"></span>
+                <br>
+                <nobr>Gender: </nobr>
+                <span id="gender"></span>
+                <img src="" id="genderImg">
+            </div>
         </div>
         <script src="js/functions.js"></script>
     </body>
-    
 </html>
