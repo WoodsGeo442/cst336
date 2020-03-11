@@ -3,6 +3,7 @@ h1{
     font-size: 4em;
     margin-bottom: 25px;
     margin-top: 0px;
+<<<<<<< HEAD
 }
 
 body form{
@@ -17,3 +18,50 @@ body{
     background-color: red;
 }
 
+=======
+    font-family: cursive;
+}
+
+.main{
+   background-color: khaki;
+}
+
+.container {
+    border: black;
+    background-color: burlywood;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-style: solid;
+    text-align: center;
+    font-family: cursive;
+}
+
+#first{
+    width: 350px;
+    height: auto;
+    border-radius: 25px;
+}
+
+#second{
+    width: 350px;
+    height: auto;
+    border-radius: 25px;
+}
+
+#third{
+    width: 350px;
+    height: auto;
+    border-radius: 25px;
+}
+
+#fourth{
+    width: 350px;
+    height: auto;
+    border-radius: 25px;
+}
+
+.column{
+    font-family: cursive;
+    text-align: center;
+}
+>>>>>>> de693b32941ec639f3cf7c3ef91b61673f80106a

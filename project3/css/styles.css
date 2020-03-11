@@ -1,0 +1,34 @@
+h1{
+    text-align: center;
+    font-size: 24em;
+    margin-bottom: 25px;
+    margin-top: 0px;
+    font-family: cursive;
+}
+
+.main{
+   background-color: cornflowerblue;
+}
+
+.container {
+    border: black;
+    background-color: lightblue;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-style: dashed;
+    text-align: center;
+    font-family: cursive;
+    border-radius: 25%;
+    font-size: 25px;
+}
+
+.column{
+    font-family: cursive;
+    text-align: center;
+    font-size: 35px;
+}
+
+#genderImg{
+    width: 100px;
+    height: auto;
+}
