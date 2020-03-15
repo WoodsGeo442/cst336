@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+var keywords = ["dog", "volleyball", "cats", "beach", "college"];
+=======
 var keywords = ["dog", "city", "cats", "park", "college"];
+>>>>>>> de693b32941ec639f3cf7c3ef91b61673f80106a
 let randomKeywords = Math.floor(Math.random() * 5);
 
 let randomindex1 = Math.floor(Math.random() * 20);
@@ -8,6 +12,10 @@ let randomindex4 = Math.floor(Math.random() * 20);
 
 
 $(document).ready(function(){
+<<<<<<< HEAD
+  //alert($("#username").val());
+=======
+>>>>>>> de693b32941ec639f3cf7c3ef91b61673f80106a
     $.ajax({
         method: "GET",
         url: "https://pixabay.com/api/",

@@ -3,6 +3,22 @@ h1{
     font-size: 4em;
     margin-bottom: 25px;
     margin-top: 0px;
+<<<<<<< HEAD
+}
+
+body form{
+    text-align: center;
+    
+    margin-bottom: 20px;
+    
+}
+body{
+    border-bottom-style: solid;
+    border-color: black;
+    background-color: red;
+}
+
+=======
     font-family: cursive;
 }
 
@@ -48,3 +64,4 @@ h1{
     font-family: cursive;
     text-align: center;
 }
+>>>>>>> de693b32941ec639f3cf7c3ef91b61673f80106a
