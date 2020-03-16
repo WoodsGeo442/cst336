@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
 app.use(express.static('css'));
-// app.use(bodyParser.urlencoded({extended: true}));
-// app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 app.use(express.static("public"));
 
