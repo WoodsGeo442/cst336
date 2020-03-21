@@ -8,7 +8,6 @@ let randomindex4 = Math.floor(Math.random() * 20);
 
 
 $(document).ready(function(){
-  //alert($("#username").val());
 
     $.ajax({
         method: "GET",
