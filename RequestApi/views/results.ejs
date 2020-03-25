@@ -1,0 +1,22 @@
+<%- include ('templates/header'); -%>
+
+<div class='container'>
+    <div class='jumbotron'>
+        <h1> SEARCH RESULTS </h1>
+        <button class='btn btn-info' onclick='location.href="/";'>Search Again</button>
+    </div>
+
+    <ul id='book-list'>
+        <% Object.keys(data).forEach(function(book){%>
+	        <li> 
+	            <img class='poster' src=<%=book.thumbnail_url%> />
+	            <div>
+                    <h5><%=book.preview_url%></h5>
+                    <p><%=book.Year%></p>
+                </div>
+	        </li>	
+        <% }); %>
+    <ul>
+</div>
+
+<%- include ('templates/footer'); -%>
