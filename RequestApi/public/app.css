@@ -25,14 +25,14 @@ hr{
   width: 120px;
 }
 
-#book-list > li > .poster{
+#book-list > li > .cover{
   display: block;
   float: left;
   margin-right: 0px;
 }
 
-#book-list > li > .poster,
-#book-list > li > .poster > img{
+#book-list > li > .cover,
+#book-list > li > .cover > img{
   width: 100%; 
   height: 100%;
 }

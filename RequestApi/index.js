@@ -11,7 +11,7 @@ app.get("/", function(req, res){
 
 app.get('/results', function(req, res) {
     var query = req.query.search;
-    var url = 'https://openlibrary.org/api/books?bibkeys=ISBN:' + query + "&format=json";
+    var url = 'https://openlibrary.org/api/books?bibkeys=ISBN:' + query + "&jscmd=data&format=json";
     request(url, function( error, responce, dataStream){
         if(!error && responce.statusCode == 200){
             var data = JSON.parse(dataStream);

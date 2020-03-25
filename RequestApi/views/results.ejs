@@ -7,12 +7,12 @@
     </div>
 
     <ul id='book-list'>
-        <% Object.keys(data).forEach(function(book){%>
+       <% Object.keys(data).forEach(function(key){%>
 	        <li> 
-	            <img class='poster' src=<%=book.thumbnail_url%> />
+	            <img class='cover' src=<%=data[key].cover.medium%> />
 	            <div>
-                    <h5><%=book.author%></h5>
-                    <p><%=book.Year%></p>
+                    <h5><%=data[key].title%></h5>
+                    <p><%=data[key].publish_date%></p>
                 </div>
 	        </li>	
         <% }); %>
