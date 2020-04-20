@@ -59,16 +59,7 @@ app.get('/gender', function(req, res){
 });
 
 app.get('/keyword', function(req, res){
-    var stmt = 'select quote, firstName, lastName ' + 'from l9_quotes, l9_author ' + 'where l9_quotes.authorId=l9_author.authorId ' + 'and quote like\'%' + req.query.keyword + '%\';'
-    connection.query(stmt, function(error, found){
-        if(error) throw error;
-        var name = found[0].firstName + ' ' + found[0].lastName;
-        res.render('quotes', {name: name, quotes: found});      
-    });
-});
-
-app.get('/category', function(req, res){
-    var stmt = 'select quote, firstName, lastName ' + 'from l9_quotes, l9_author ' + 'where l9_quotes.authorId=l9_author.authorId ' + 'and country=\'' + req.query.country + '\';'
+    var stmt = 'select quote, firstName, lastName ' + 'from l9_quotes, l9_author ' + 'where l9_quotes.authorId=l9_author.authorId ' + 'and quote like\'%' + req.query.keyword + '\';'
     connection.query(stmt, function(error, found){
         if(error) throw error;
         var name = found[0].firstName + ' ' + found[0].lastName;
