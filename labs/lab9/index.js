@@ -39,7 +39,7 @@ app.get('/author', function(req, res){
 });
 
 app.get('/author/:aid', function(req, res){
-    var stmt = 'select firstName, lastName, quote ' + 'from l9_author, l9_quotes ' + 'where l9_author.authorId = l9_quotes.authorId ' + ' and l9_author.authorId=\'' + req.params.aid + '\';'
+    var stmt = 'select quote, firstName, lastName ' + 'from l9_author, l9_quotes ' + 'where l9_author.authorId = l9_quotes.authorId ' + ' and l9_author.authorId=' + req.params.aid + ';'
     console.log('MySQL SQL Statement = ', stmt);
     connection.query(stmt, function(error, found){
         if(error) throw error;
