@@ -22,19 +22,14 @@ app.get('/', function(req, res){
 app.get('/author', function(req, res){
     var firstName = req.query.firstname;
     var lastName = req.query.lastname;
-    var stmt = 'select * from l9_author where firstName=\'' + firstName + '\' and lastName=\'' + lastName + '\';'
+    var stmt = 'select quote, firstName, lastName ' + 'from l9_author, l9_quotes ' + 'where firstName=\'' + firstName + '\' and lastName=\'' + lastName + '\';'
     
-    //console.log('MySQL SQL Statement = ', stmt);
+    console.log('MySQL SQL Statement = ', stmt);
     connection.query(stmt, function(error,found){
         var author=null;
         if(error) throw error;
-        if(found.length){
-            author=found[0];
-            author.dob=author.dob.toString().split(' ').slice(0,4).join(' ');
-            author.dod=author.dod.toString().split(' ').slice(0,4).join(' ');
-            
-        }
-        res.render('author', {author: author});
+        var name = found[0].firstName + ' ' + found[0].lastName;
+        res.render('quotes', {name: name, quotes: found}); 
     });
 });
 
