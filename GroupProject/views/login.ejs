@@ -3,7 +3,10 @@
 <div class='container'>
     <div class='jumbotron'>
         <h1> Video Game Database Search </h1>
-        <form action='/welcome' method='GET'>
+        <%if(typeof error != 'undefined' && error){%>
+            <h6 style='color: red;'> Incorrect login credentials! </h6>
+	    <%}%>
+        <form action='/login' method='POST'>
             <div class='form-group row'>
                 <label for='username' class='col-sm-4 col-form-label'>Username</label>
                 <div class='col-sm-4'>

@@ -30,7 +30,7 @@ function isAuthenticated(req, res, next){
 }
 
 function checkUsername(username){
-    let stmt = 'SELECT * FROM loginInfo WHERE username=' + username;
+    let stmt = 'SELECT * FROM loginInfo WHERE username=?';
     return new Promise(function(resolve, reject){
        connection.query(stmt, [username], function(error, results){
            if(error) throw error;
@@ -40,12 +40,17 @@ function checkUsername(username){
 }
 
 function checkPassword(password, hash){
-    return new Promise(function(resolve, reject){
-       bcrypt.compare(password, hash, function(error, result){
-          if(error) throw error;
-          resolve(result);
-       }); 
-    });
+    // return new Promise(function(resolve, reject){
+    //   bcrypt.compare(password, hash, function(error, result){
+    //       if(error) throw error;
+    //       resolve(result);
+    //   }); 
+    // });
+    if(password == hash){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 //routes
@@ -70,15 +75,18 @@ app.get('/login', function(req,res){
 
 app.post('/login', async function(req, res){
     let isUserExist   = await checkUsername(req.body.username);
+    console.log(isUserExist);
     let hashedPasswd  = isUserExist.length > 0 ? isUserExist[0].password : '';
+    console.log(hashedPasswd);
     let passwordMatch = await checkPassword(req.body.password, hashedPasswd);
     if(passwordMatch){
         req.session.authenticated = true;
         req.session.user = isUserExist[0].username;
-        res.redirect('login');
+        res.redirect('welcome');
     }
     else{
-        res.render('welcome', {error: true});
+        console.log(passwordMatch);
+        res.render('login', {error: true});
     }
 });
 
