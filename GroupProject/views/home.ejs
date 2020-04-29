@@ -11,11 +11,23 @@
         </form>
         <br><br>
             
-        <form action='/results' method='GET'>
+        <form action='/gameSearch' method='GET'>
             <div class='form-group row'>
                 <label for='name' class='col-sm-4 col-form-label'>Game Title</label>
                 <div class='col-sm-4'>
                     <input type='text' class='form-control' id='gameTitle' name='gameTitle'>
+                </div>
+                <div class='col-sm-4'>
+                    <button class='btn btn-primary btn-block'> Search </button>
+                </div>
+            </div>
+        </form>
+        
+        <form action='/resultGame' method='GET'>
+            <div class='form-group row'>
+                <label for='name' class='col-sm-4 col-form-label'>Game Developers</label>
+                <div class='col-sm-4'>
+                    <input type='text' class='form-control' id='company_name' name='company_name'>
                 </div>
                 <div class='col-sm-4'>
                     <button class='btn btn-primary btn-block'> Search </button>
