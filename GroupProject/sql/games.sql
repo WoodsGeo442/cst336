@@ -40,32 +40,31 @@ CREATE TABLE `videoGames`(
     `videogame_id` mediumint(20) NOT NULL,
     `title`    varchar(25) COLLATE utf8_unicode_ci NOT NULL,
     `genre`    varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-    `platform` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-    `rating`   mediumint(10) NOT NULL,
-    `pricing`  float(100) NOT NULL
+    `rating`   mediumint(20) NOT NULL,
+    `pricing`  float NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `videoGames` (`videogame_id`, `title`, `genre`, `platform`, `rating`, `pricing`) VALUES
-(1, 'DOOM', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(2, 'Sekiro: Shadows Die Twice', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(3, 'Resident Evil 2 Remake', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(4, 'Death Stranding', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(5, 'Control', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(6, 'The Outer Worlds', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(7, 'Outer Wilds', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(8, 'Star Wars Jedi: Fallen Order', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(9, 'Apex Legends', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(10, 'The Legend of Zelda: Links Awakening', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(11, 'Gears 5', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(12, 'Astral Chain', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(13, 'Devil May Cry 5', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(14, 'Borderlands 3', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(15, 'Days Gone', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(16, 'Call of Duty: Modern Warfare', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(17, 'Metro Exodus', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(18, 'Pokémon Sword and Shield', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(19, 'Final Fantasy 14: Shadowbringers', `FPS`, `Console, PC`, `9/10`, `59.99`),
-(20, 'The Division 2', `FPS`, `Console, PC`, `9/10`, `59.99`);
+INSERT INTO `videoGames` (`videogame_id`, `title`, `genre`, `rating`, `pricing`) VALUES
+(1, 'DOOM', 'FPS',  '9/10', '59.99'),
+(2, 'Sekiro: Shadows Die Twice', 'FPS',  '9/10', '59.99'),
+(3, 'Resident Evil 2 Remake', 'FPS',  '9/10', '59.99'),
+(4, 'Death Stranding', 'FPS',  '9/10', '59.99'),
+(5, 'Control', 'FPS',  '9/10', '59.99'),
+(6, 'The Outer Worlds', 'FPS',  '9/10', '59.99'),
+(7, 'Outer Wilds', 'FPS',  '9/10', '59.99'),
+(8, 'Star Wars Jedi: Fallen Order', 'FPS',  '9/10', '59.99'),
+(9, 'Apex Legends', 'FPS',  '9/10', '59.99'),
+(10, 'The Legend of Zelda: Links Awakening', 'FPS',  '9/10', '59.99'),
+(11, 'Gears 5', 'FPS',  '9/10', '59.99'),
+(12, 'Astral Chain', 'FPS',  '9/10', '59.99'),
+(13, 'Devil May Cry 5', 'FPS',  '9/10', '59.99'),
+(14, 'Borderlands 3', 'FPS',  '9/10', '59.99'),
+(15, 'Days Gone', 'FPS',  '9/10', '59.99'),
+(16, 'Call of Duty: Modern Warfare', 'FPS',  '9/10', '59.99'),
+(17, 'Metro Exodus', 'FPS',  '9/10', '59.99'),
+(18, 'Pokémon Sword and Shield', 'FPS',  '9/10', '59.99'),
+(19, 'Final Fantasy 14: Shadowbringers', 'FPS',  '9/10', '59.99'),
+(20, 'The Division 2', 'FPS',  '9/10', '59.99');
 
 -- CREATE TABLE FOR GAME DEVELOPERS
 DROP TABLE IF EXISTS `gameDevelopers`;
@@ -101,18 +100,18 @@ ALTER TABLE `loginInfo`
   ADD PRIMARY KEY (`loginId`);
 
 ALTER TABLE `videoGames`
-  ADD PRIMARY KEY (`loginId`);
+  ADD PRIMARY KEY (`videogame_id`);
 
 ALTER TABLE `gameDevelopers`
-  ADD PRIMARY KEY (`loginId`);
+  ADD PRIMARY KEY (`gameDevelopers_id`);
   
 ALTER TABLE `loginInfo`
   MODIFY `loginId` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 ALTER TABLE `videoGames`
-  MODIFY `loginId` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `videogame_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 ALTER TABLE `gameDevelopers`
-  MODIFY `loginId` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `gameDevelopers_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
   
 COMMIT;
