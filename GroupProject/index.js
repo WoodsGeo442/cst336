@@ -90,6 +90,12 @@ app.post('/login', async function(req, res){
     }
 });
 
+/* Function to Logout of session */
+app.get('/logout', function(req, res){
+   req.session.destroy();
+   res.redirect('/');
+});
+
 app.get('/welcome', function(req, res){
     res.render('welcome');
 });
