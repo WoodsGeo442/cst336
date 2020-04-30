@@ -1,0 +1,32 @@
+<%- include ('partials/header'); -%>
+
+<div class='container'>
+    <div class='jumbotron'>
+        <h1> FOUND AUTHOR </h1>
+        <div class='row'>
+            <div class='col-sm-4'></div>
+            <button class='col-sm-4 btn btn-info btn-block' onclick='location.href="/";'>Search Again</button>
+            <div class='col-sm-4'></div>
+        </div>
+    </div>
+    
+    <div class='row'>
+        <%if(!game){%>
+            <h1 class='col-sm-14 notfound'>CANNOT FIND THIS AUTHOR!!!</h1>
+        <%} else {%>
+            <!--<image class='col-sm-4 portait' src=<%=author.portrait%> />-->
+            <div class='col-sm-4 info'>
+                `title`    varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+    `genre`    varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+    `rating`   mediumint(20) NOT NULL,
+    `pricing`  float NOT NULL
+                <h3><%=videoGames.title%></h3>
+                <div>Genre: <%=videoGames.genre%></div>
+                <div>Rating: <%=videoGames.rating%></div>
+                <div>Price: <%=videoGames.pricing%></div>
+            </div>
+        <%}%>
+    </div>
+</div>
+
+<%- include ('partials/footer'); -%>

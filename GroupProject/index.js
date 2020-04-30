@@ -100,9 +100,31 @@ app.get('/welcome', function(req, res){
     res.render('welcome');
 });
 
+app.get('/gameSearch', function(req, res){
+    var sql = 'select title from videoGames where title=\''  + req.query.gameTitle + '\';'
+	    connection.query(sql, function(error, found){
+	        console.log(sql);
+	        var game = null;
+	        if(error) throw error;
+	        if(found.length){
+	            var name = found[0].title;
+                res.render('gameSearchResult', {name: name, games: found});
+	        };
+	    });
+});
+
 app.get('/results', function(req, res){
-    res.render('results');
-})
+    var sql = 'select * from videoGames where title=\''  + req.query.gameTitle + '\';'
+	    connection.query(sql, function(error, found){
+	        console.log(sql);
+	        var game = null;
+	        if(error) throw error;
+	        if(found.length){
+	            var name = found[0].title;
+                res.render('detailGame', {name: name, games: found});
+	        };
+	    });
+});
 
 app.get('*', function(req, res){
     res.render('error');
