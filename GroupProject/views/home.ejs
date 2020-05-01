@@ -5,10 +5,10 @@
         <h1 align='center'> Video Game Database Search </h1>
         <nav align='center'>
             <ul>
-                <li> <a href = "/home" id = "currentPage"> Home </a> </li>
-                <li> <a href = "/proglang"> Template </a> </li>
-                <li> <a href = "/viruses"> Template </a> </li>
-                <li> <a href = "/compnet"> Template </a> </li>
+                <li> <a href = "/" id = "currentPage"> Home </a> </li>
+                <li> <a href = "/createaccount"> Create Account</a> </li>
+                <li> <a href = "/searchGames"> Search Games </a> </li>
+                <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
             </ul>
         </nav>
         <br><br>
@@ -18,31 +18,18 @@
             </div>
         </form>
         <br><br>
-            
-        <form action='/gameSearch' method='GET'>
-            <div class='form-group row'>
-                <label for='name' class='col-sm-4 col-form-label'>Game Title</label>
-                <div class='col-sm-4'>
-                    <input type='text' class='form-control' id='gameTitle' name='gameTitle'>
-                </div>
-                <div class='col-sm-4'>
-                    <button class='btn btn-primary btn-block'> Search </button>
-                </div>
-            </div>
-        </form>
-        
-        <form action='/resultGame' method='GET'>
-            <div class='form-group row'>
-                <label for='name' class='col-sm-4 col-form-label'>Game Developers</label>
-                <div class='col-sm-4'>
-                    <input type='text' class='form-control' id='company_name' name='company_name'>
-                </div>
-                <div class='col-sm-4'>
-                    <button class='btn btn-primary btn-block'> Search </button>
-                </div>
-            </div>
-        </form>
-
+        <div align='center'>
+            <strong>
+                <p>Welcome to our Video Game Website!</p>
+                <p>Our website allows you to search for video games as well as game developers.</p>
+                <p>We have plenty of features such as creating an account, which you then can create a "wishlist".</p>
+                <p>What are you waiting for go and try it out!</p>      
+            </strong>
+        </div>
+        </br>
+        <div align = 'center'>
+            <a href = "/searchGames"><img src='website background.jpg' width='500px' height ='300px' /></a>
+        </div>
     </div>
 </div>
 
