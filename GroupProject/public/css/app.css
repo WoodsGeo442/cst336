@@ -20,3 +20,18 @@ a { /* links within "nav" container */
     border-radius: 15px;
     justify-content: space-between;
 }
+
+body{
+    background-color: #363636;
+}
+
+.container{
+    background-color: #b30000;
+    padding-bottom: 1px;
+    padding-top: 10px;
+    border-radius: 25px;
+}
+
+.footer{
+    color: white;
+}
