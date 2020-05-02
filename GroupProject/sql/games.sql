@@ -41,30 +41,31 @@ CREATE TABLE `videoGames`(
     `title`    varchar(500) COLLATE utf8_unicode_ci NOT NULL,
     `genre`    varchar(50) COLLATE utf8_unicode_ci NOT NULL,
     `rating`   mediumint(20) NOT NULL,
-    `pricing`  float NOT NULL
+    `pricing`  float NOT NULL,
+    `cover`    varchar(200) COLLATE utf8_unicode_ci NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `videoGames` (`videogame_id`, `title`, `genre`, `rating`, `pricing`) VALUES
-(1, 'DOOM', 'FPS',  '9/10', '59.99'),
-(2, 'Sekiro: Shadows Die Twice', 'FPS',  '9/10', '59.99'),
-(3, 'Resident Evil 2 Remake', 'FPS',  '9/10', '59.99'),
-(4, 'Death Stranding', 'FPS',  '9/10', '59.99'),
-(5, 'Control', 'FPS',  '9/10', '59.99'),
-(6, 'The Outer Worlds', 'FPS',  '9/10', '59.99'),
-(7, 'Outer Wilds', 'FPS',  '9/10', '59.99'),
-(8, 'Star Wars Jedi: Fallen Order', 'FPS',  '9/10', '59.99'),
-(9, 'Apex Legends', 'FPS',  '9/10', '59.99'),
-(10, 'The Legend of Zelda: Links Awakening', 'FPS',  '9/10', '59.99'),
-(11, 'Gears 5', 'FPS',  '9/10', '59.99'),
-(12, 'Astral Chain', 'FPS',  '9/10', '59.99'),
-(13, 'Devil May Cry 5', 'FPS',  '9/10', '59.99'),
-(14, 'Borderlands 3', 'FPS',  '9/10', '59.99'),
-(15, 'Days Gone', 'FPS',  '9/10', '59.99'),
-(16, 'Call of Duty: Modern Warfare', 'FPS',  '9/10', '59.99'),
-(17, 'Metro Exodus', 'FPS',  '9/10', '59.99'),
-(18, 'Pokémon Sword and Shield', 'FPS',  '9/10', '59.99'),
-(19, 'Final Fantasy 14: Shadowbringers', 'FPS',  '9/10', '59.99'),
-(20, 'The Division 2', 'FPS',  '9/10', '59.99');
+INSERT INTO `videoGames` (`videogame_id`, `title`, `genre`, `rating`, `pricing`, `cover`) VALUES
+(1, 'DOOM', 'FPS',  '9/10', '59.99', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/900px-Albert_Einstein_Head.jpg'),
+(2, 'Sekiro: Shadows Die Twice', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(3, 'Resident Evil 2 Remake', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(4, 'Death Stranding', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(5, 'Control', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(6, 'The Outer Worlds', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(7, 'Outer Wilds', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(8, 'Star Wars Jedi: Fallen Order', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(9, 'Apex Legends', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(10, 'The Legend of Zelda: Links Awakening', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(11, 'Gears 5', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(12, 'Astral Chain', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(13, 'Devil May Cry 5', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(14, 'Borderlands 3', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(15, 'Days Gone', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(16, 'Call of Duty: Modern Warfare', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(17, 'Metro Exodus', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(18, 'Pokémon Sword and Shield', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(19, 'Final Fantasy 14: Shadowbringers', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg'),
+(20, 'The Division 2', 'FPS',  '9/10', '59.99', 'https://file-cdn.scdkey.com/product/P201609081840431360.jpg');
 
 -- CREATE TABLE FOR GAME DEVELOPERS
 DROP TABLE IF EXISTS `gameDevelopers`;

@@ -23,6 +23,7 @@
             <%if(!game){%>
                 <h1 class='col-sm-14 notfound'>CANNOT FIND GAME!!!</h1>
             <%} else {%>
+                <img class='col-sm-4 portrait' src=<%=game.cover%> />
                 <div class='col-sm-4 info'>
                     <h3><%=game.title%></h3>
                     <div>Genre: <%=game.genre%></div>
