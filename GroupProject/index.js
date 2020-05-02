@@ -106,14 +106,14 @@ app.get('/welcome', function(req, res){
 });
 
 app.get('/gameSearch', function(req, res){
-    var sql = 'select title, videogame_id from videoGames where title=\''  + req.query.gameTitle + '\';'
+    var sql = 'select * from videoGames where title=\''  + req.query.gameTitle + '\';'
 	    connection.query(sql, function(error, found){
 	        console.log(sql);
 	        var game = null;
 	        if(error) throw error;
 	        if(found.length){
-	            var name = found[0].title;
-                res.render('gameSearchResult', {name: name, games: found});
+	            var game = found[0];
+                res.render('detailGame', {game: game, games: found});
 	        };
 	    });
 });

@@ -11,14 +11,26 @@
                 <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
             </ul>
         </nav>
-        <br><br>
+        <br><hr><br>
+        
         <form action='/login' method='GET'>
             <div class="text-center">
                 <button class='btn btn-primary btn-block'> Login </button>
             </div>
         </form>
-        <br><br>
-        
+        <br><hr><br>
+        <div class='row'>
+            <%if(!game){%>
+                <h1 class='col-sm-14 notfound'>CANNOT FIND GAME!!!</h1>
+            <%} else {%>
+                <div class='col-sm-4 info'>
+                    <h3><%=game.title%></h3>
+                    <div>Genre: <%=game.genre%></div>
+                    <div>Rating: <%=game.rating%>/10</div>
+                    <div>Pricing: $<%=game.pricing%></div>
+                </div>
+            <%}%>
+        </div>
     
     </div>
     
