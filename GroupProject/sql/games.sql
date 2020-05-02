@@ -38,8 +38,8 @@ DROP TABLE IF EXISTS `videoGames`;
 CREATE TABLE `videoGames`(
     -- videogame_id, title, genre, platform, rating, pricing;
     `videogame_id` mediumint(20) NOT NULL,
-    `title`    varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-    `genre`    varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+    `title`    varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+    `genre`    varchar(50) COLLATE utf8_unicode_ci NOT NULL,
     `rating`   mediumint(20) NOT NULL,
     `pricing`  float NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

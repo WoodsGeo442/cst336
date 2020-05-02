@@ -90,6 +90,11 @@ app.post('/login', async function(req, res){
     }
 });
 
+//Create Account Route
+app.get('/createaccount', function(req, res){
+    res.render('createaccount');
+});
+
 /* Function to Logout of session */
 app.get('/logout', function(req, res){
    req.session.destroy();
@@ -101,7 +106,7 @@ app.get('/welcome', function(req, res){
 });
 
 app.get('/gameSearch', function(req, res){
-    var sql = 'select title from videoGames where title=\''  + req.query.gameTitle + '\';'
+    var sql = 'select title, videogame_id from videoGames where title=\''  + req.query.gameTitle + '\';'
 	    connection.query(sql, function(error, found){
 	        console.log(sql);
 	        var game = null;
@@ -113,8 +118,41 @@ app.get('/gameSearch', function(req, res){
 	    });
 });
 
-app.get('/results', function(req, res){
-    var sql = 'select * from videoGames where title=\''  + req.query.gameTitle + '\';'
+app.get('/searchGames', function(req, res){
+    // var sql = 'select country from l9_author';
+    // connection.query(sql, function(error, results) {
+    //     if(error) throw error;
+    //     var arr = [];
+    //     results.forEach(function(r) {
+    //         if (!arr.includes(r.country)) {
+    //             arr.push(r.country);
+    //         }
+    //     });
+    //     res.render('home', {countries: arr});
+    // });
+    res.render('searchGames');
+});
+
+app.get('/searchDevelopers', function(req, res){
+    res.render('searchDevelopers');
+});
+
+app.get('/genreSearch', function(req, res){
+    var sql = 'select genre, title, videogame_id from videoGames where genre=\''  + req.query.gameGenre + '\';'
+	    connection.query(sql, function(error, found){
+	        console.log(sql);
+	        var game = null;
+	        if(error) throw error;
+	        if(found.length){
+	            var name = found[0].title;
+                res.render('genreSearchResult', {name: name, games: found});
+	        };
+	    });
+});
+
+
+app.get('/results/:vid', function(req, res){
+    var sql = 'select * from videoGames where videogame_id=\''  + req.query.vid + '\';'
 	    connection.query(sql, function(error, found){
 	        console.log(sql);
 	        var game = null;
@@ -125,6 +163,8 @@ app.get('/results', function(req, res){
 	        };
 	    });
 });
+
+
 
 app.get('*', function(req, res){
     res.render('error');
