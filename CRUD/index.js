@@ -20,13 +20,17 @@ connection.connect();
 
 /* Home Route */
 app.get('/', function(req, res){
+    res.render('home')
+});
+
+app.get('/displayAuthors', function(req, res){
     var stmt = 'SELECT * FROM l9_author;';
     console.log(stmt);
     var authors = null;
     connection.query(stmt, function(error, results){
         if(error) throw error;
         if(results.length) authors = results;
-        res.render('home', {authors: authors});
+        res.render('displayAuthors', {authors: authors});
     });
 });
 
