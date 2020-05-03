@@ -2,10 +2,22 @@
 
 <div class='container'>
     <div class='jumbotron'>
-        <h1> Video Game Database Search </h1>
+        <h1 align='center'> Video Game Database Search </h1>
+        <nav align='center'>
+            <ul>
+                <li> <a href = "/" id = "currentPage"> Home </a> </li>
+                <li> <a href = "/createaccount"> Create Account</a> </li>
+                <li> <a href = "/searchGames"> Search Games </a> </li>
+                <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
+            </ul>
+        </nav>
+        </br>
+        </br>
+        
         <%if(typeof error != 'undefined' && error){%>
             <h6 style='color: red;'> Incorrect login credentials! </h6>
 	    <%}%>
+	    
         <form action='/login' method='POST'>
             <div class='form-group row'>
                 <label for='username' class='col-sm-4 col-form-label'>Username</label>
