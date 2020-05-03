@@ -17,8 +17,8 @@ app.set('view engine', 'ejs');
 /*Configure MySQL DBMS*/
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'elijahhallera',
-    password: 's@uc!n*$31',
+    user: 'geowoods',
+    password: 'Rockydale442',
     database: 'games'
 });
 connection.connect();
@@ -116,7 +116,7 @@ app.post('/createaccount', function(req, res){
                     if(error) throw error;
                     res.redirect('/login');
                 });
-            }
+            };
         });
     });
 });
@@ -251,6 +251,20 @@ app.get('/genreSearch', function(req, res){
                 res.render('genreSearchResult', {name: name, games: found});
 	        };
 	    });
+});
+
+app.get('/changeRecord', function(req, res){
+    var sql = 'select * from videoGames, gameDevelopers;'
+        connection.query(sql, function(error,found){
+            console.log(sql);
+            var game = null;
+            var dev = null;
+            if(error) throw error;
+	        if(found.length){
+	            var name = found[0].title;
+                res.render('genreSearchResult', {name: name, games: found});
+	        };
+        });
 });
 
 //routes
