@@ -18,19 +18,31 @@
             </div>
         </form>
         <br><br>
-            
-        <form action='/gameSearch' method='GET'>
+        
+        <div  align='center'>
+            <img style='border: black' src='company_logos.png' width='500px' height ='300px' /> 
+        </div>
+        
+        </br>
+        </br>
+        
+        <form action='/developerSearch' method='GET'>
             <div class='form-group row'>
-                <label for='name' class='col-sm-4 col-form-label'>Game Developer Name</label>
+                <label for='company_name' class='col-sm-4 col-form-label' id="searchDevelopers_padding">Search Developers</label>
                 <div class='col-sm-4'>
-                    <input type='text' class='form-control' id='gameTitle' name='gameTitle'>
+					<select id='company_name' name='company_name' style="width: 250px;">
+						<%companies.forEach(function(company_name){%>
+				            <option id='company_name' name='company_name' value='<%=company_name%>'><%=company_name%></option>
+				        <%});%>
+					</select>
+					
+				</div>
+				<div>
+                    <button class='btn btn-primary'> Search </button>
                 </div>
-                <div class='col-sm-4'>
-                    <button class='btn btn-primary btn-block'> Search </button>
                 </div>
             </div>
         </form>
-
     </div>
 </div>
 
