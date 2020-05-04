@@ -1,0 +1,43 @@
+<%- include ('partials/header'); -%>
+
+<div class='container'>
+    <div class='jumbotron'>
+        <nav>
+            <li><a href='/logout'>Logout</a></li>
+            <li align='right'><a href='//account_edit'>Account</a></li>   
+        </nav>
+        <h1 align='center'> Video Game Database Search </h1>
+        <nav align='center'>
+            <ul>
+                <li> <a href = "/welcome" id = "currentPage"> Home </a> </li>
+                <li> <a href = "/searchGames"> Search Games </a> </li>
+                <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
+                <li> <a href = "/wishlist"> WishList </a> </li>
+            </ul>
+        </nav>
+        <br><hr><br>
+        <div align='center'>
+            <h3>Search Result(s)</h3>
+            <ul style="color: black">
+                <%games.forEach(function(q){%>
+                    <img class='col-sm-4 portrait' src=<%=q.cover%> />
+                    </br>
+                    <div class='col-sm-4 info'>
+                        <h3><%=q.title%></h3>
+                        <div><strong>Genre:</strong>&ensp;<%=q.genre%></div>
+                        <div><strong>Rating:</strong>&ensp;<%=q.rating%>/10</div>
+                        <div><strong>Pricing:</strong>&ensp;$<%=q.pricing%></div>
+                        <div><strong>Summary:</strong>&ensp;<%=q.summary%></div>
+                        </br>
+                        </br>
+                    </div>
+                <%});%>
+            </ul> 
+        </div>
+    </div>
+    
+    
+  </div>
+</div>
+
+<%- include ('partials/footer'); -%>
