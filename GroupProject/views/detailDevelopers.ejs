@@ -19,12 +19,16 @@
             </div>
         </form>
         <br><hr><br>
-        <div class='row'>
+        <div align='center'>
             <%if(!company_name){%>
                 <h1 class='col-sm-14 notfound'>CANNOT FIND Developer!!!</h1>
             <%} else {%>
+                <img class='col-sm-4 portrait' src=<%=company_name.logo%> />
+                </br>
+                </br>
                 <div class='col-sm-4 info'>
                     <h3><%=company_name.company_name%></h3>
+                    <div><strong>Company Summary:</strong>&ensp;<%=company_name.summary%></div>
                 </div>
             <%}%>
         </div>
