@@ -5,6 +5,8 @@ var app = express();
 var mysql = require('mysql');
 var session = require('express-session');
 var bcrypt = require('bcrypt');
+
+
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
@@ -14,11 +16,12 @@ app.use(session({
 }));
 app.set('view engine', 'ejs');
 
+
 /*Configure MySQL DBMS*/
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'geowoods',
-    password: 'Rockydale442',
+    user: 'elijahhallera',
+    password: 's@uc!n*$31',
     database: 'games'
 });
 connection.connect();
@@ -64,17 +67,16 @@ app.get('/login', function(req,res){
 
 app.post('/login', async function(req, res){
     let isUserExist   = await checkUsername(req.body.username);
-    console.log(isUserExist);
     let hashedPasswd  = isUserExist.length > 0 ? isUserExist[0].password : '';
-    console.log(hashedPasswd);
     let passwordMatch = await checkPassword(req.body.password, hashedPasswd);
+    console.log(hashedPasswd);
+    console.log(isUserExist);
     if(passwordMatch){
         req.session.authenticated = true;
-        req.session.user = isUserExist[0].username;
+        req.session.user = isUserExist[0].id;
         res.redirect('welcome');
     }
     else{
-        console.log(passwordMatch);
         res.render('login', {error: true});
     }
 });
@@ -82,6 +84,7 @@ app.post('/login', async function(req, res){
 /* Function to Logout of session */
 app.get('/logout', function(req, res){
    req.session.destroy();
+   console.log("DONE");
    res.redirect('/');
 });
 
@@ -96,30 +99,30 @@ app.get('/logout', function(req, res){
 //              CREATE ACCOUNT INFORMATION                       //
 ///////////////////////////////////////////////////////////////////
 
-/* Create Account Routes */
-app.get('/createaccount', function(req, res){
-    res.render('createaccount');
-});
+app.get('/account_new', function(req,res){
+    res.render('account_new');
+})
 
-app.post('/createaccount', function(req, res){
-    let salt = 10;
-    bcrypt.hash(req.body.password, salt, function(error, hash){
+app.post('/account_new', function(req, res){
+  //console.log(req.body);
+  let salt = 10;
+  bcrypt.hash(req.body.password, salt, function(error, hash){
         if(error) throw error;
         connection.query('SELECT * FROM loginInfo;', function(error, result){
             if(error) throw error;
             if(result.length){
-                var new_userID = result[result.length - 1].loginId + 1;
-                let stmt = 'INSERT INTO loginInfo (loginId, username, password) VALUES (?, ?, ?)';
-                let data = [new_userID, req.body.username, hash];
-                console.log(stmt);
+                var userID = result[result.length - 1].id + 1;
+                let stmt = 'INSERT INTO loginInfo (id, username, password) VALUES (?, ?, ?)';
+                let data = [userID, req.body.username, req.body.password];
                 connection.query(stmt, data, function(error, result){
-                    if(error) throw error;
-                    res.redirect('/login');
-                });
-            };
+                  if(error) throw error;
+                  res.redirect('/');
+                })
+            }
         });
     });
 });
+
 
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -133,17 +136,31 @@ app.post('/createaccount', function(req, res){
 ///////////////////////////////////////////////////////////////////
 
 app.get('/searchDevelopers', function(req, res){
-	var sql = 'select company_name from gameDevelopers';
-    connection.query(sql, function(error, results) {
-        if(error) throw error;
-        var arr = [];
-        results.forEach(function(r) {
-            if (!arr.includes(r.company_name)) {
-                arr.push(r.company_name);
-            }
-        });
-    	res.render('searchDevelopers', {companies: arr});
+    if(req.session.authenticated){
+        var sql = 'select company_name from gameDevelopers';
+            connection.query(sql, function(error, results) {
+            if(error) throw error;
+            var arr = [];
+            results.forEach(function(r) {
+                if (!arr.includes(r.company_name)) {
+                    arr.push(r.company_name);
+                }
+            });
+    	res.render('premiumpages/prem_searchD', {companies: arr});
     });
+    } else {
+        var sql = 'select company_name from gameDevelopers';
+            connection.query(sql, function(error, results) {
+            if(error) throw error;
+            var arr = [];
+            results.forEach(function(r) {
+                if (!arr.includes(r.company_name)) {
+                    arr.push(r.company_name);
+                }
+            });
+        	res.render('searchDevelopers', {companies: arr});
+        });
+    }
 });
 
 app.get('/developerSearch', function(req, res){
@@ -234,7 +251,30 @@ app.get('/results/:vid', function(req, res){
 });
 
 app.get('/searchGames', function(req, res){
-    res.render('searchGames');
+    if(req.session.authenticated){
+        res.render('premiumpages/prem_searchG')
+    } else {
+        res.render('searchGames');
+    }
+});
+
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+//
+//
+//
+//
+//
+///////////////////////////////////////////////////////////////////
+//             Authenticated Routes                              //
+///////////////////////////////////////////////////////////////////
+
+app.get('/account', isAuthenticated, function(req, res){
+    res.render('profile');
+});
+
+app.get('/welcome', isAuthenticated, function(req, res){
+    res.render('premiumpages/prem_welcome', {username: req.session.username});
 });
 
 ///////////////////////////////////////////////////////////////////
@@ -253,27 +293,13 @@ app.get('/genreSearch', function(req, res){
 	    });
 });
 
-app.get('/changeRecord', function(req, res){
-    var sql = 'select * from videoGames, gameDevelopers;'
-        connection.query(sql, function(error,found){
-            console.log(sql);
-            var game = null;
-            var dev = null;
-            if(error) throw error;
-	        if(found.length){
-	            var name = found[0].title;
-                res.render('genreSearchResult', {name: name, games: found});
-	        };
-        });
-});
-
 //routes
 app.get('/', function(req, res){
-    res.render('home');
-});
-
-app.get('/welcome', function(req, res){
-    res.render('welcome');
+    if(req.session.authenticated){
+        res.render('premiumpages/prem_home')
+    } else {
+        res.render('home');
+    }
 });
 
 app.get('*', function(req, res){
