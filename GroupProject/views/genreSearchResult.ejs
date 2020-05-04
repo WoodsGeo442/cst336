@@ -18,12 +18,24 @@
             </div>
         </form>
         <br><br>
-        <h3>Search Result(s)</h3>
-        <ul>
-            <%games.forEach(function(q){%>
-                <a href='/results/<%='1'%>'><h2><%=q.title%></h2></a>
-            <%});%>
-        </ul>
+        <div align='center'>
+            <h3>Search Result(s)</h3>
+            <ul style="color: black">
+                <%games.forEach(function(q){%>
+                    <img class='col-sm-4 portrait' src=<%=q.cover%> />
+                    </br>
+                    <div class='col-sm-4 info'>
+                        <h3><%=q.title%></h3>
+                        <div><strong>Genre:</strong>&ensp;<%=q.genre%></div>
+                        <div><strong>Rating:</strong>&ensp;<%=q.rating%>/10</div>
+                        <div><strong>Pricing:</strong>&ensp;$<%=q.pricing%></div>
+                        <div><strong>Summary:</strong>&ensp;<%=q.summary%></div>
+                        </br>
+                        </br>
+                    </div>
+                <%});%>
+            </ul> 
+        </div>
     </div>
     
     
