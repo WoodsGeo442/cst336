@@ -4,7 +4,7 @@
     <div class='jumbotron'>
         <nav>
             <li><a href='/logout'>Logout</a></li>
-            <li align='right'><a href='/account'>Account</a></li>   
+            <li align='right'><a href='/account_edit'>Account</a></li>   
         </nav>
         <h1 align='center'> Search Video Games </h1>
         <nav align='center'>
@@ -15,12 +15,6 @@
                 <li> <a href = "/wishlist"> WishList </a> </li>
             </ul>
         </nav>
-        <br><br>
-        <form action='/login' method='GET'>
-            <div class="text-center">
-                <button class='btn btn-primary btn-block'> Login </button>
-            </div>
-        </form>
         <br><br>
             
         <form action='/gameSearch' method='GET'>
@@ -49,9 +43,9 @@
         
         <form action='/ratingSearch' method='GET'>
             <div class='form-group row'>
-                <label for='name' class='col-sm-4 col-form-label'>Game Rating</label>
+                <label for='name' class='col-sm-4 col-form-label'>Game Rating (Select between 6-10)</label>
                 <div class='col-sm-4'>
-                    <input type='text' class='form-control' id='gameTitle' name='gameTitle'>
+                    <input type='text' class='form-control' id='gameRating' name='gameRating'>
                 </div>
                 <div class='col-sm-4'>
                     <button class='btn btn-primary btn-block'> Search </button>
@@ -63,7 +57,7 @@
             <div class='form-group row'>
                 <label for='name' class='col-sm-4 col-form-label'>Game Pricing</label>
                 <div class='col-sm-4'>
-                    <input type='text' class='form-control' id='gameTitle' name='gameTitle'>
+                    <input type='text' class='form-control' id='gamePricing' name='gamePricing'>
                 </div>
                 <div class='col-sm-4'>
                     <button class='btn btn-primary btn-block'> Search </button>
