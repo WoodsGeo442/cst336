@@ -2,21 +2,19 @@
 
 <div class='container'>
     <div class='jumbotron'>
+        <nav>
+            <li><a href='/logout'>Logout</a></li>
+            <li align='right'><a href='/account'>Account</a></li>   
+        </nav>
         <h1 align='center'> Video Game Database Search </h1>
         <nav align='center'>
             <ul>
-                <li> <a href = "/" id = "currentPage"> Home </a> </li>
-                <li> <a href = "/account_new"> Create Account</a> </li>
+                <li> <a href = "/welcome" id = "currentPage"> Home </a> </li>
                 <li> <a href = "/searchGames"> Search Games </a> </li>
                 <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
+                <li> <a href = "/wishlist"> WishList </a> </li>
             </ul>
         </nav>
-        <br><br>
-        <form action='/login' method='GET'>
-            <div class="text-center">
-                <button class='btn btn-primary btn-block'> Login </button>
-            </div>
-        </form>
         <br><br>
         <div align='center'>
             <strong>

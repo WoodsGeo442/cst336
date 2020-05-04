@@ -1,0 +1,43 @@
+<%- include ('partials/header'); -%>
+
+<div class='container'>
+    <div class='jumbotron'>
+        <nav>
+            <li><a href='/logout'>Logout</a></li>
+            <li align='right'><a href='/account'>Account</a></li>   
+        </nav>
+        
+        <h1 align='center'> Welcome!</h1>
+        <nav align='center'>
+            <ul>
+                <li> <a href = "/welcome" id = "currentPage"> Home </a> </li>
+                <li> <a href = "/searchGames"> Search Games </a> </li>
+                <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
+                <li> <a href = "/wishlist"> WishList </a> </li>
+            </ul>
+        </nav>
+        
+        <a href='/premGame/new'>Create New Game</a> <br><br>
+        
+        <div class='row'>
+            <%if(!games){%>
+                <h1 class='col-sm-12 nofound'>Empty database. Please add the first video game!</h1>    
+            <%}
+            else{%>
+                
+        	    <table>
+        		    <tr><th>Game</th><th>Action</th></tr>
+        		    <tr><td colspan="2"><hr/></td></tr>
+        		    <%games.forEach(function(game){%>
+            		    <tr>
+            			    <td><%=game.title%></td>
+            			    <td><a href='/game/<%=game.title%>'>Info</a> | <a href='/game/<%=game.title%>/edit'>Edit</a> | <a href='/game/<%=game.title%>/delete'>Delete</a> </td></tr>
+        		    <%});%>
+        	    </table>
+            <%}%>
+        </div>
+        
+    </div>
+</div>
+
+<%- include ('partials/footer'); -%>

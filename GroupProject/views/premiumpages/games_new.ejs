@@ -1,0 +1,63 @@
+<%- include ('partials/header'); -%>
+
+<div class='container'>
+	<div class='jumbotron'>
+	    <nav>
+	        <li><a href='/logout'>Logout</a></li>
+            <li align='right'><a href='/account'>Account</a></li>
+	    </nav>
+		<h1 align='center'> Video Game Database Search </h1>
+        <nav align='center'>
+            <ul>
+                <li> <a href = "/welcome" id = "currentPage"> Home </a> </li>
+                <li> <a href = "/searchGames"> Search Games </a> </li>
+                <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
+                <li> <a href = "/wishlist"> WishList </a> </li>
+            </ul>
+        </nav>
+        <br><hr><br>
+        
+        <br><hr><br>
+        <h3>Add A Game</h3>
+        <form action='/premGame/new' method='POST'>
+            <div class='form-group row'>
+                <label for='title' class='col-sm-4 col-form-label'>Title: </label>
+			    <div class='col-sm-4'>
+				    <input type='text' class='form-control' id='title' name='title' placeholder='Doom' required>
+				</div>
+			</div>
+			<div class='form-group row'>
+			    <label for='genre' class='col-sm-4 col-form-label'>Genre: </label>
+			    <div class='col-sm-4'>
+				    <input type='text' class='form-control' id='genre' name='genre' placeholder='FPS' required>
+			    </div>
+		    </div>
+		    <div class='form-group row'>
+			    <label for='rating' class='col-sm-4 col-form-label'>Rating: </label>
+			    <div class='col-sm-4'>
+				    <input type='text' class='form-control' id='rating' name='rating' placeholder='7' required>
+			    </div>
+		    </div>
+		    <div class='form-group row'>
+			    <label for='pricing' class='col-sm-4 col-form-label'>Pricing: </label>
+			    <div class='col-sm-4'>
+				    <input type='text' class='form-control' id='pricing' name='pricing' placeholder='59.99' required>
+			    </div>
+		    </div>
+		    <div class='form-group row'>
+			    <label for='companyName' class='col-sm-4 col-form-label'>Company Name: </label>
+			    <div class='col-sm-4'>
+				    <input type='text' class='form-control' id='companyName' name='companyName' placeholder='Capcom'>
+			    </div>
+		    </div>
+            <div class='form-group row'>
+			    <div class='col-sm-4'>
+				    <button class='btn btn-primary btn-block'>Add Game</button>
+			    </div>
+			    <div class='col-sm-4'></div>
+		    </div>
+        </form>
+	</div>
+<div>
+    
+<%- include ('partials/footer'); -%>

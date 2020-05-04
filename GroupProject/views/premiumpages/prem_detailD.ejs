@@ -2,13 +2,17 @@
 
 <div class='container'>
     <div class='jumbotron'>
+        <nav>
+            <li><a href='/logout'>Logout</a></li>
+            <li align='right'><a href='/account'>Account</a></li>   
+        </nav>
         <h1 align='center'> Video Game Database Search </h1>
         <nav align='center'>
             <ul>
-                <li> <a href = "/" id = "currentPage"> Home </a> </li>
-                <li> <a href = "/account_new"> Create Account</a> </li>
+                <li> <a href = "/welcome" id = "currentPage"> Home </a> </li>
                 <li> <a href = "/searchGames"> Search Games </a> </li>
                 <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
+                <li> <a href = "/wishlist"> WishList </a> </li>
             </ul>
         </nav>
         <br><hr><br>
@@ -20,16 +24,11 @@
         </form>
         <br><hr><br>
         <div class='row'>
-            <%if(!game){%>
-                <h1 class='col-sm-14 notfound'>CANNOT FIND GAME!!!</h1>
+            <%if(!company_name){%>
+                <h1 class='col-sm-14 notfound'>CANNOT FIND Developer!!!</h1>
             <%} else {%>
-                <!--<img class='col-sm-4 portrait' src=<%=game.cover%> />-->
                 <div class='col-sm-4 info'>
-                    <h3><%=game.title%></h3>
-                    <div>Genre: <%=game.genre%></div>
-                    <div>Rating: <%=game.rating%>/10</div>
-                    <div>Pricing: $<%=game.pricing%></div>
-                    <div>Summary: <%=game.biography%></div>
+                    <h3><%=company_name.company_name%></h3>
                 </div>
             <%}%>
         </div>

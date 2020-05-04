@@ -20,8 +20,8 @@ app.set('view engine', 'ejs');
 /*Configure MySQL DBMS*/
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'elijahhallera',
-    password: 's@uc!n*$31',
+    user: 'geowoods',
+    password: 'Rockydale442',
     database: 'games'
 });
 connection.connect();
@@ -274,7 +274,14 @@ app.get('/account', isAuthenticated, function(req, res){
 });
 
 app.get('/welcome', isAuthenticated, function(req, res){
-    res.render('premiumpages/prem_welcome', {username: req.session.username});
+    var stmt = 'SELECT * FROM videoGames;';
+    console.log(stmt);
+    var games = null;
+    connection.query(stmt, function(error, results){
+        if(error) throw error;
+        if(results.length) games = results;
+        res.render('premiumpages/prem_welcome', {games: games, username: req.session.username});
+        });
 });
 
 ///////////////////////////////////////////////////////////////////
@@ -296,10 +303,85 @@ app.get('/genreSearch', function(req, res){
 //routes
 app.get('/', function(req, res){
     if(req.session.authenticated){
-        res.render('premiumpages/prem_home')
+        res.render('premiumpages/prem_welcome');
     } else {
         res.render('home');
     }
+});
+
+app.get('/game/:title', isAuthenticated, function(req, res){
+    var stmt = 'SELECT * FROM videoGames WHERE title=\'' + req.params.title + '\';'
+    console.log(stmt);
+    var games = null;
+    connection.query(stmt, function(error, results){
+       if(error) throw error;
+       if(results.length){
+           var games = results[0].title;
+           res.render('premiumpages/prem_detailG', {games: games});
+       }
+    });
+});
+
+/* Edit a game record */
+app.get('/game/:title/edit', function(req, res){
+    var stmt = 'SELECT * FROM videoGames WHERE title=\'' + req.params.title + '\';';
+    console.log(stmt);
+    connection.query(stmt, function(error, results){
+       if(error) throw error;
+       if(results.length){
+           var games = results[0];
+           res.render('premiumpages/prem_gameEdit', {games: games});
+       }
+    });
+});
+
+/* Edit a game record */
+app.put('/premGame/:title', function(req, res){
+    console.log(req.body);
+    var stmt = 'UPDATE videoGames SET ' +
+                'title = "'+ req.body.title + '",' +
+                'genre = "'+ req.body.genre + '",' +
+                'rating = "'+ req.body.rating + '",' +
+                'pricing = "'+ req.body.pricing + '",' +
+                'companyName = "'+ req.body.companyName + '"' +
+                'WHERE title = ' + req.params.title + ";"
+    //console.log(stmt);
+    connection.query(stmt, function(error, result){
+        if(error) throw error;
+        res.redirect('game/' + req.params.title);
+    });
+});
+
+/*Create a new game*/
+app.get('/premGame/new', function(req, res){
+    res.render('premiumpages/games_new');
+});
+
+/* Create a new game */
+app.post('/premGame/new', function(req, res){
+    var games = null;
+    connection.query('SELECT COUNT(*) FROM videoGames;', function(error, result){
+        if(error) throw error;
+        if(result.length){
+            var videogame_id = result[0]['COUNT(*)'] + 1;
+            var stmt = 'INSERT INTO videoGames ' +
+                      '(videogame_id, title, genre, rating, pricing, companyName) '+
+                      'VALUES ' +
+                      '(' + 
+                       videogame_id + ',"' +
+                       req.body.title + '","' +
+                       req.body.genre + '","' +
+                       req.body.rating + '","' +
+                       req.body.pricing + '","' +
+                       req.body.companyName + '"' +
+                       ');';
+            console.log(stmt);
+            connection.query(stmt, function(error, result){
+                if(error) throw error;
+                res.redirect('/premiumpages/prem_welcome');
+            });
+        };
+    });
 });
 
 app.get('*', function(req, res){
