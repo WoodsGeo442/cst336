@@ -1,0 +1,33 @@
+<%- include ('partials/header'); -%>
+
+<div class='container'>
+    <div class='jumbotron'>
+        <h1 align='center'> Video Game Database Search </h1>
+        <nav align='center'>
+            <ul>
+                <li> <a href = "/" id = "currentPage"> Home </a> </li>
+                <li> <a href = "/account_new"> Create Account</a> </li>
+                <li> <a href = "/searchGames"> Search Games </a> </li>
+                <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
+            </ul>
+        </nav>
+        <br><br>
+        <form action='/login' method='GET'>
+            <div class="text-center">
+                <button class='btn btn-primary btn-block'> Login </button>
+            </div>
+        </form>
+        <br><br>
+        <h3>Search Result(s)</h3>
+        <ul>
+            <%games.forEach(function(q){%>
+                <a href='/results/<%='1'%>'><h2><%=q.title%></h2></a>
+            <%});%>
+        </ul>
+    </div>
+    
+    
+  </div>
+</div>
+
+<%- include ('partials/footer'); -%>

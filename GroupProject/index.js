@@ -384,6 +384,16 @@ app.post('/premGame/new', function(req, res){
     });
 });
 
+/* Delete a game */
+app.get('/game/:title/delete', function(req, res){
+    var stmt = 'DELETE from videoGames WHERE title=\''+ req.params.title + '\';';
+    console.log(stmt);
+    connection.query(stmt, function(error, result){
+        if(error) throw error;
+        res.redirect('/premiumpages/prem_welcome');
+    });
+});
+
 app.get('*', function(req, res){
     res.render('error');
 });
