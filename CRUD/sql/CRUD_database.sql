@@ -3,6 +3,18 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+DROP TABLE IF EXISTS `users`;
+
+-- CREATE TABLE FOR USERS
+CREATE TABLE `users` (
+	`userId` tinyint(2) NOT NULL,
+	`username` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
+	`password` varchar(72) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `users` (`userId`, `username`, `password`) VALUES
+(1, 'Admin', 'admin123');
+
 --
 -- Table structure for table `l9_author`
 --
@@ -88,6 +100,11 @@ INSERT INTO `l9_quotes` (`quoteId`, `quote`, `authorId`, `category`, `likes`) VA
 -- Indexes for dumped tables
 --
 
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`userId`);
+  
 --
 -- Indexes for table `l9_author`
 --
@@ -103,6 +120,12 @@ ALTER TABLE `l9_quotes`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `loginInfo`
+--
+ALTER TABLE `users`
+  MODIFY `userId` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `l9_author`
