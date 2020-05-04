@@ -16,16 +16,15 @@
                 <li> <a href = "/wishlist"> WishList </a> </li>
             </ul>
         </nav>
-        
+        <div align='center'>
         <a href='/premGame/new'>Create New Game</a> <br><br>
-        
         <div class='row'>
             <%if(!games){%>
                 <h1 class='col-sm-12 nofound'>Empty database. Please add the first video game!</h1>    
             <%}
             else{%>
                 
-        	    <table>
+        	    <table align='center'>
         		    <tr><th>Game</th><th>Action</th></tr>
         		    <tr><td colspan="2"><hr/></td></tr>
         		    <%games.forEach(function(game){%>
@@ -35,8 +34,8 @@
         		    <%});%>
         	    </table>
             <%}%>
+        </div>    
         </div>
-        
     </div>
 </div>
 
