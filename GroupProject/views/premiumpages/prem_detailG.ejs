@@ -4,7 +4,7 @@
     <div class='jumbotron'>
         <nav>
             <li><a href='/logout'>Logout</a></li>
-            <li align='right'><a href='/account'>Account</a></li>   
+            <li align='right'><a href='//account_edit'>Account</a></li>   
         </nav>
         <h1 align='center'> Video Game Database Search </h1>
         <nav align='center'>
@@ -16,17 +16,18 @@
             </ul>
         </nav>
         <br><hr><br>
-        
-        <br><hr><br>
-        <div class='row'>
-            <%if(!games){%>
+        <div align='center'>
+            <%if(!game){%>
                 <h1 class='col-sm-14 notfound'>CANNOT FIND GAME!!!</h1>
             <%} else {%>
+                <img class='col-sm-4 portrait' src=<%=game.cover%> />
+                </br>
                 <div class='col-sm-4 info'>
-                    <h3><%=games.title%></h3>
-                    <div>Genre: <%=games.genre%></div>
-                    <div>Rating: <%=games.rating%>/10</div>
-                    <div>Pricing: $<%=games.pricing%></div>
+                    <h3><%=game.title%></h3>
+                    <div><strong>Genre:</strong>&ensp;<%=game.genre%></div>
+                    <div><strong>Rating:</strong>&ensp;<%=game.rating%>/10</div>
+                    <div><strong>Pricing:</strong>&ensp;$<%=game.pricing%></div>
+                    <div><strong>Summary:</strong>&ensp;<%=game.summary%></div>
                 </div>
             <%}%>
         </div>
