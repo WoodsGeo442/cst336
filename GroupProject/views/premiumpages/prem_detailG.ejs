@@ -16,21 +16,22 @@
             </ul>
         </nav>
         <br><hr><br>
+        
         <div align='center'>
-            <%if(!games){%>
+            <%if(!game){%>
                 <h1 class='col-sm-14 notfound'>CANNOT FIND GAME!!!</h1>
+                
             <%} else {%>
-                <img class='col-sm-4 portrait' src=<%=games.cover%> />
-                </br>
-                <img class='col-sm-4 portrait' src=<%=games.cover%> />
+                <%= console.log(game)%>
+                <img class='col-sm-4 portrait' src=<%=game.cover%> />
                 <div class='col-sm-4 info'>
-                    <h3><%=games.title%></h3>
-                    <div><strong>Genre:</strong>&ensp;<%=games.genre%></div>
-                    <div><strong>Rating:</strong>&ensp;<%=games.rating%>/10</div>
-                    <div><strong>Pricing:</strong>&ensp;$<%=games.pricing%></div>
-                    <div><strong>Company Name:</strong>&ensp;<%=games.companyName%></div>
+                    <h3><%=game.title%></h3>
+                    <div><strong>Genre:</strong>&ensp;<%=game.genre%></div>
+                    <div><strong>Rating:</strong>&ensp;<%=game.rating%>/10</div>
+                    <div><strong>Pricing:</strong>&ensp;$<%=game.pricing%></div>
+                    <div><strong>Company Name:</strong>&ensp;<%=game.companyName%></div>
                     
-                    <div><strong>Summary:</strong>&ensp;<%=games.summary%></div>
+                    <div><strong>Summary:</strong>&ensp;<%=game.summary%></div>
                 </div>
             <%}%>
         </div>

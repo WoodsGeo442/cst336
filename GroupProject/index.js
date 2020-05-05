@@ -334,11 +334,11 @@ app.get('/account', isAuthenticated, function(req, res){
 app.get('/welcome', isAuthenticated, function(req, res){
     var stmt = 'SELECT * FROM videoGames;';
     console.log(stmt);
-    var games = null;
+    var game = null;
     connection.query(stmt, function(error, results){
         if(error) throw error;
-        if(results.length) games = results;
-        res.render('premiumpages/prem_welcome', {games: games, username: req.session.username});
+        if(results.length) game = results;
+        res.render('premiumpages/prem_welcome', {game: game, username: req.session.username});
         });
 });
 
@@ -366,12 +366,26 @@ app.get('/', function(req, res){
 app.get('/game/:title', function(req, res){
     var stmt = 'SELECT * FROM videoGames WHERE title=\'' + req.params.title + '\';'
     console.log(stmt);
-    var games = null;
+    var game = null;
     connection.query(stmt, function(error, results){
        if(error) throw error;
        if(results.length){
-           var games = results[0].title;
-           res.render('premiumpages/prem_detailG', {games: games});
+           var game = results[0];
+           res.render('premiumpages/prem_detailG', {game: game});
+       }
+    });
+});
+
+//SHOW INFORMATION
+/* Edit a game record */
+app.get('/game/:title/info', function(req, res){
+    var stmt = 'SELECT * FROM videoGames WHERE title=\'' + req.params.title + '\';';
+    console.log(stmt);
+    connection.query(stmt, function(error, results){
+       if(error) throw error;
+       if(results.length){
+           var game = results[0];
+           res.render('premiumpages/prem_gameInfo', {game: game});
        }
     });
 });
@@ -383,8 +397,8 @@ app.get('/game/:title/edit', function(req, res){
     connection.query(stmt, function(error, results){
        if(error) throw error;
        if(results.length){
-           var games = results[0];
-           res.render('premiumpages/prem_gameEdit', {games: games});
+           var game = results[0];
+           res.render('premiumpages/prem_gameEdit', {game: game});
        }
     });
 });
@@ -446,7 +460,7 @@ app.get('/game/:title/delete', function(req, res){
     console.log(stmt);
     connection.query(stmt, function(error, result){
         if(error) throw error;
-        res.redirect('/premiumpages/prem_welcome');
+        res.redirect('premiumpages/prem_welcome');
     });
 });
 
