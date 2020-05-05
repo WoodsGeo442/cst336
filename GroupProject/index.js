@@ -362,8 +362,8 @@ app.get('/', function(req, res){
     }
 });
 
-<<<<<<< HEAD
-app.get('/game/:title', isAuthenticated, function(req, res){
+// <<<<<<< HEAD
+app.get('/game/:title', function(req, res){
     var stmt = 'SELECT * FROM videoGames WHERE title=\'' + req.params.title + '\';'
     console.log(stmt);
     var games = null;
@@ -392,6 +392,7 @@ app.get('/game/:title/edit', function(req, res){
 /* Edit a game record */
 app.put('/premGame/:title', function(req, res){
     console.log(req.body);
+    var games = null;
     var stmt = 'UPDATE videoGames SET ' +
                 'title = "'+ req.body.title + '",' +
                 'genre = "'+ req.body.genre + '",' +
@@ -417,9 +418,9 @@ app.post('/premGame/new', function(req, res){
     connection.query('SELECT COUNT(*) FROM videoGames;', function(error, result){
         if(error) throw error;
         if(result.length){
-            var videogame_id = result[0]['COUNT(*)'] + 1;
+            var videogame_id = result[0]['COUNT(*)'] + 2;
             var stmt = 'INSERT INTO videoGames ' +
-                      '(videogame_id, title, genre, rating, pricing, companyName) '+
+                      '(videogame_id, title, genre, rating, pricing, companyName, summary) '+
                       'VALUES ' +
                       '(' + 
                        videogame_id + ',"' +
@@ -427,12 +428,13 @@ app.post('/premGame/new', function(req, res){
                        req.body.genre + '","' +
                        req.body.rating + '","' +
                        req.body.pricing + '","' +
-                       req.body.companyName + '"' +
+                       req.body.companyName + '","' +
+                       req.body.summary + '"' +
                        ');';
             console.log(stmt);
             connection.query(stmt, function(error, result){
                 if(error) throw error;
-                res.redirect('/premiumpages/prem_welcome');
+                res.redirect('premiumpages/prem_welcome');
             });
         };
     });
@@ -448,8 +450,7 @@ app.get('/game/:title/delete', function(req, res){
     });
 });
 
-=======
->>>>>>> 4caf2c89b883d796b49431b997514fed07d17040
+
 app.get('*', function(req, res){
     res.render('error');
 });
