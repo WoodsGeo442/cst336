@@ -20,6 +20,16 @@
             <p><strong>Click the button to get a random game!</strong></p>
             <button onclick="randomGame()">Do it!</button>
             <p id="RNG"></p>
+            <img class='col-sm-4 portrait' id='gameCover' src= />
+            </br>
+            <div class='col-sm-4 info'>
+                <h3 id='title'></h3>
+                
+                <div><strong>Genre:</strong>&ensp;<div id='genre'></div></div>
+                <div><strong>Rating:</strong>&ensp;<div id='rating'></div>/10</div>
+                <div><strong>Pricing:</strong>&ensp;$<div id='pricing'></div></div>
+                <div><strong>Summary:</strong>&ensp;<div id='summary'></div></div>
+            </div>
         </div>
         </br>
     </div>
@@ -27,9 +37,25 @@
 
 <script>
 function randomGame() {
-  var x = document.getElementById("RNG");
-  x/*.innerHTML*/ = Math.floor((Math.random() * 20) + 1);
-   
+    var x = document.getElementById("RNG");
+    x = Math.floor((Math.random() * 20) + 1);
+    $.ajax({
+        url: '/randomGame',
+        type: 'POST',
+        data: {
+            x: x
+        },
+        success: function(data){
+            console.log(data);
+            $('#RNG').html(data[x].videogame_id);
+            $('#gameCover').attr('src', `${data[x].cover}`);
+            $('#title').html(data[x].title);
+            $('#genre').html(data[x].genre);
+            $('#rating').html(data[x].rating);
+            $('#pricing').html(data[x].pricing);
+            $('#summary').html(data[x].summary);
+        }
+    });
 }
 </script>
 

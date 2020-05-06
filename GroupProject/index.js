@@ -431,6 +431,17 @@ app.get('/gamepicker', function(req, res){
     });
 });
 
+app.post('/randomGame', function(req, res){
+    var stmt = 'SELECT * FROM videoGames;';
+    console.log(stmt);
+    var games = null;
+    connection.query(stmt, function(error, results){
+        if(error) throw error;
+        if(results.length) games = results;
+        res.send(games);
+        });
+});
+
 app.get('*', function(req, res){
     res.render('error');
 });
