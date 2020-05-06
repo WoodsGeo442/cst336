@@ -1,0 +1,36 @@
+<%- include ('partials/header'); -%>
+
+<div>
+    <div class="header">
+        <h1 style='font-size: 60px'>RNG Game Picker</h1>
+    </div>
+    <div class="topnav">
+      <a href = "/welcome" id = "currentPage">Home</a>
+      <a href='/logout'>Logout</a>
+      <a href='/account'>Account</a>
+      <a href = "/searchGames">Search Games</a>
+      <a href = "/searchdevelopers">Search Game Developers</a>
+      <a href = "/gamepicker">Game Picker</a>
+    </div>   
+</div>
+
+<div class='container'>
+    <div class='jumbotron'>
+        <div align='center'>
+            <p><strong>Click the button to get a random game!</strong></p>
+            <button onclick="randomGame()">Do it!</button>
+            <p id="RNG"></p>
+        </div>
+        </br>
+    </div>
+</div>
+
+<script>
+function randomGame() {
+  var x = document.getElementById("RNG");
+  x/*.innerHTML*/ = Math.floor((Math.random() * 20) + 1);
+   
+}
+</script>
+
+<%- include ('partials/footer'); -%>

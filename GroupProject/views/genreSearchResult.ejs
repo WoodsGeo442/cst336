@@ -1,23 +1,20 @@
 <%- include ('partials/header'); -%>
 
+<div>
+    <div class="header">
+        <h1 style='font-size: 60px'>GENRE RESULTS</h1>
+    </div>
+    <div class="topnav">
+      <a href = "/" id = "currentPage">Home</a>
+      <a href = "/account_new">Create Account</a>
+      <a href = "/login">Login</a>
+      <a href = "/searchGames">Search Games</a>
+      <a href = "/searchdevelopers">Search Game Developers</a>
+    </div>   
+</div>
+
 <div class='container'>
     <div class='jumbotron'>
-        <h1 align='center'> Video Game Database Search </h1>
-        <nav align='center'>
-            <ul>
-                <li> <a href = "/" id = "currentPage"> Home </a> </li>
-                <li> <a href = "/account_new"> Create Account</a> </li>
-                <li> <a href = "/searchGames"> Search Games </a> </li>
-                <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
-            </ul>
-        </nav>
-        <br><br>
-        <form action='/login' method='GET'>
-            <div class="text-center">
-                <button class='btn btn-primary btn-block'> Login </button>
-            </div>
-        </form>
-        <br><br>
         <div align='center'>
             <h3>Search Result(s)</h3>
             <ul style="color: black">
@@ -29,7 +26,6 @@
                         <div><strong>Genre:</strong>&ensp;<%=q.genre%></div>
                         <div><strong>Rating:</strong>&ensp;<%=q.rating%>/10</div>
                         <div><strong>Pricing:</strong>&ensp;$<%=q.pricing%></div>
-                        <div><strong>Company Name:</strong>&ensp;<%=q.companyName%></div>
                         <div><strong>Summary:</strong>&ensp;<%=q.summary%></div>
                         </br>
                         </br>
@@ -37,10 +33,12 @@
                 <%});%>
             </ul> 
         </div>
+        <form action='/searchGames' method='GET'>
+            <div class="text-center">
+                <button class='btn btn-primary'> Search Again</button>
+            </div>
+        </form>
     </div>
-    
-    
-  </div>
 </div>
 
 <%- include ('partials/footer'); -%>

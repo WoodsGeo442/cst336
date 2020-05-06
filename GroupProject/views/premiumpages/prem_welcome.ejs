@@ -1,40 +1,32 @@
 <%- include ('partials/header'); -%>
 
+<div>
+    <div class="header">
+        <h1 style='font-size: 60px'>Video Game Database Search</h1>
+    </div>
+    <div class="topnav">
+      <a href = "/welcome" id = "currentPage">Home</a>
+      <a href='/logout'>Logout</a>
+      <a href='/account'>Account</a>
+      <a href = "/searchGames">Search Games</a>
+      <a href = "/searchdevelopers">Search Game Developers</a>
+      <a href = "/gamepicker">Game Picker</a>
+    </div>   
+</div>
+
 <div class='container'>
     <div class='jumbotron'>
-        <nav>
-            <li><a href='/logout'>Logout</a></li>
-            <li align='right'><a href='/account'>Account</a></li>   
-        </nav>
-        
-        <h1 align='center'> Welcome!</h1>
-        <nav align='center'>
-            <ul>
-                <li> <a href = "/welcome" id = "currentPage"> Home </a> </li>
-                <li> <a href = "/searchGames"> Search Games </a> </li>
-                <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
-                <li> <a href = "/wishlist"> WishList </a> </li>
-            </ul>
-        </nav>
         <div align='center'>
-        <a href='/premGame/new'>Create New Game</a> <br><br>
-        <div class='row'>
-            <%if(!game){%>
-                <h1 class='col-sm-12 nofound'>Empty database. Please add the first video game!</h1>    
-            <%}
-            else{%>
-                
-        	    <table align='center'>
-        		    <tr><th>Game</th><th>Action</th></tr>
-        		    <tr><td colspan="2"><hr/></td></tr>
-        		    <%game.forEach(function(game){%>
-            		    <tr>
-            			    <td><%=game.title%></td>
-            			    <td><a href='/game/<%=game.title%>/Info'>Info</a> | <a href='/game/<%=game.title%>/edit'>Edit</a> | <a href='/game/<%=game.title%>/delete'>Delete</a> </td></tr>
-        		    <%});%>
-        	    </table>
-            <%}%>
-        </div>    
+            <strong>
+                <p>Welcome to our Video Game Website!</p>
+                <p>Our website allows you to search for video games as well as game developers.</p>
+                <p>Having a tough time deciding on a game? Use our RNG page!</p>
+                <p>What are you waiting for go and try it out!</p>      
+            </strong>
+        </div>
+        </br>
+        <div align = 'center'>
+            <a href = "/searchGames"><img src='website background.jpg' width='500px' height ='300px' /></a>
         </div>
     </div>
 </div>

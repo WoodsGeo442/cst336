@@ -1,36 +1,32 @@
 <%- include ('partials/header'); -%>
 
-<div class='container'>
-    <div class='jumbotron'>
-        <h1 align='center'> Video Game Database Search </h1>
-        <nav align='center'>
-            <ul>
-                <li> <a href = "/" id = "currentPage"> Home </a> </li>
-                <li> <a href = "/account_new"> Create Account</a> </li>
-                <li> <a href = "/searchGames"> Search Games </a> </li>
-                <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
-            </ul>
-        </nav>
-        <br><br>
-        <form action='/login' method='GET'>
-            <div class="text-center">
-                <button class='btn btn-primary btn-block'> Login </button>
-            </div>
-        </form>
-        <br><br>
-        <div align='center'>
-            <strong>
-                <p>Welcome to our Video Game Website!</p>
-                <p>Our website allows you to search for video games as well as game developers.</p>
-                <p>We have plenty of features such as creating an account, which you then can create a "wishlist".</p>
-                <p>What are you waiting for go and try it out!</p>      
-            </strong>
+    <div>
+        <div class="header">
+            <h1 style='font-size: 60px'>Video Game Database Search</b></h1>
         </div>
-        </br>
-        <div align = 'center'>
-            <a href = "/searchGames"><img src='website background.jpg' width='500px' height ='300px' /></a>
+        <div class="topnav">
+          <a href = "/" id = "currentPage">Home</a>
+          <a href = "/account_new">Create Account</a>
+          <a href = "/login">Login</a>
+          <a href = "/searchGames">Search Games</a>
+          <a href = "/searchdevelopers">Search Game Developers</a>
+        </div>   
+    </div>
+    
+    <div class='container'>
+        <div class='jumbotron'>
+            <div align='center'>
+                <strong>
+                    <p>Welcome to our Video Game Website!</p>
+                    <p>Our website allows you to search for video games as well as game developers.</p>
+                    <p>What are you waiting for go and try it out!</p>      
+                </strong>
+            </div>
+            </br>
+            <div align = 'center'>
+                <a href = "/searchGames"><img src='website background.jpg' width='500px' height ='300px' /></a>
+            </div>
         </div>
     </div>
-</div>
 
 <%- include ('partials/footer'); -%>

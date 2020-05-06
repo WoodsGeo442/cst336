@@ -1,23 +1,22 @@
 <%- include ('partials/header'); -%>
 
+<div>
+    <div class="header">
+        <h1 style='font-size: 60px'>Search Games</h1>
+    </div>
+    <div class="topnav">
+      <a href = "/welcome" id = "currentPage">Home</a>
+      <a href='/logout'>Logout</a>
+      <a href='/account'>Account</a>
+      <a href = "/searchGames">Search Games</a>
+      <a href = "/searchdevelopers">Search Game Developers</a>
+      <a href = "/gamepicker">Game Picker</a>
+    </div>   
+</div>
+
 <div class='container'>
     <div class='jumbotron'>
-        <nav>
-            <li><a href='/logout'>Logout</a></li>
-            <li align='right'><a href='/account_edit'>Account</a></li>   
-        </nav>
-        <h1 align='center'> Search Video Games </h1>
-        <nav align='center'>
-            <ul>
-                <li> <a href = "/welcome" id = "currentPage"> Home </a> </li>
-                <li> <a href = "/searchGames"> Search Games </a> </li>
-                <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
-                <li> <a href = "/wishlist"> WishList </a> </li>
-            </ul>
-        </nav>
-        <br><br>
-            
-        <form action='/gameSearch' method='GET'>
+         <form action='/gameSearch' method='GET'>
             <div class='form-group row'>
                 <label for='gameTitle' class='col-sm-4 col-form-label'>Game Title</label>
                 <div class='col-sm-4'>
@@ -50,11 +49,18 @@
             </div>
         </form>
         
-         <form action='/genreSearch' method='GET'>
+        <form action='/genreSearch' method='GET'>
             <div class='form-group row'>
-                <label for='name' class='col-sm-4 col-form-label'>Game Genre</label>
+                <label for='gameGenre' class='col-sm-4 col-form-label'>Game Genre</label>
                 <div class='col-sm-4'>
-                    <input type='text' class='form-control' id='gameGenre' name='gameGenre'>
+                     <select id = "gameGenre" name='gameGenre'>
+                        <option>FPS</option>
+                        <option>FPS</option>
+                        <option>Action</option>
+                        <option>Third-Person Shooter</option>
+                        <option>RPG</option>
+                        <option>Horror</option>
+                    </select>
                 </div>
                 <div class='col-sm-4'>
                     <button class='btn btn-primary btn-block'> Search </button>
@@ -64,9 +70,20 @@
         
         <form action='/ratingSearch' method='GET'>
             <div class='form-group row'>
-                <label for='name' class='col-sm-4 col-form-label'>Game Rating (Select between 6-10)</label>
+                <label for='gameRating' class='col-sm-4 col-form-label'>Game Rating (Select between 6-10) </label>
                 <div class='col-sm-4'>
-                    <input type='text' class='form-control' id='gameRating' name='gameRating'>
+                     <select id = "gameRating" name='gameRating'>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
                 </div>
                 <div class='col-sm-4'>
                     <button class='btn btn-primary btn-block'> Search </button>
@@ -78,14 +95,21 @@
             <div class='form-group row'>
                 <label for='name' class='col-sm-4 col-form-label'>Game Pricing</label>
                 <div class='col-sm-4'>
-                    <input type='text' class='form-control' id='gamePricing' name='gamePricing'>
+                     <select id = "gamePricing" name='gamePricing'>
+                        <option>FREE</option>
+                        <option>9.99</option>
+                        <option>19.99</option>
+                        <option>29.99</option>
+                        <option>39.99</option>
+                        <option>49.99</option>
+                        <option>59.99</option>
+                    </select>
                 </div>
                 <div class='col-sm-4'>
                     <button class='btn btn-primary btn-block'> Search </button>
                 </div>
             </div>
         </form>
-
     </div>
 </div>
 

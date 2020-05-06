@@ -1,47 +1,48 @@
 <%- include ('partials/header'); -%>
 
+<div>
+    <div class="header">
+        <h1 style='font-size: 60px'>Create New Account</h1>
+    </div>
+    <div class="topnav">
+      <a href = "/" id = "currentPage">Home</a>
+      <a href = "/account_new">Create Account</a>
+      <a href = "/login">Login</a>
+      <a href = "/searchGames">Search Games</a>
+      <a href = "/searchdevelopers">Search Game Developers</a>
+    </div>   
+</div>
+
 <div class='container'>
     <div class='jumbotron'>
-        <h1 align='center'> Video Game Database Search </h1>
-        <nav align='center'>
-            <ul>
-                <li> <a href = "/" id = "currentPage"> Home </a> </li>
-                <li> <a href = "/account_new"> Create Account</a> </li>
-                <li> <a href = "/searchGames"> Search Games </a> </li>
-                <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
-            </ul>
-        </nav>
-        
         <script>
             function checkPasswords() {
                 if ($("#password").val() == $("#password_check").val()) {
                     return true;   
                 } else {
-                    $("#password_PW").html("<b style='color: red;'>Passwords are not matching!</b>");
+                    $("#password_PW").html("<b style='color: red;'>Passwords not matching!</b>");
                     return false;
                 }
                 console.log("test");
             }
         </script>
-        
-        <h3>Create New Account</h3>
 			<form action='/account_new' method='POST'>
 				<div class='form-group row'>
 					<label for='username' class='col-sm-4 col-form-label'>USERNAME</label>
 					<div class='col-sm-4'>
-						<input type='text' class='form-control' id='username' name='username' placeholder='Jane' required>
+						<input type='text' class='form-control' id='username' name='username' placeholder='Username' required>
 					</div>
 				</div>
 				<div class='form-group row'>
 					<label for='password' class='col-sm-4 col-form-label'>PASSWORD</label>
 					<div class='col-sm-4'>
-						<input type='text' class='form-control' id='password' name='password' placeholder='Doe' required>
+						<input type='text' class='form-control' id='password' name='password' placeholder='Password' required>
 					</div>
 				</div>
 				<div class='form-group row'>
-					<label for="password_check" id="checkingPW"><b>Re-enter Password</b></label>
+					<label for="password_check" id="checkingPW" class='col-sm-4 col-form-label'>RE-ENTER PASSWORD</label>
 					<div class='col-sm-4'>
-						<input type="password" placeholder="Re-enter Password" id="password_check" name="password_check" required>
+						<input type="password" class='form-control' placeholder="Password" id="password_check" name="password_check" required>
 					</div>
 				</div>
 			    <div class='form-group row'>

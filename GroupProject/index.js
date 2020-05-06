@@ -107,13 +107,75 @@ app.post('/account_new', function(req, res){
                 let data = [userID, req.body.username, req.body.password];
                 connection.query(stmt, data, function(error, result){
                   if(error) throw error;
-                  res.redirect('/');
+                  res.redirect('/login');
                 })
             }
         });
     });
 });
 
+/* The handler for the ACCOUNT route */
+app.get('/account', isAuthenticated, function(req, res){
+    var stmt = 'select * from loginInfo where id=' + req.session.user + ';';
+	connection.query(stmt, function(error, results){
+	    var profile = null;
+	    if(error) throw error;
+	    if (results.length) {
+	        profile = results[0];
+	    }
+	    res.render('account', {profile: profile});
+	});
+});
+
+/* Check ACCOUNT Password before Deletion from Profile Page*/
+app.post('/account/:id/checkdelete', isAuthenticated, function(req, res){
+    var stmt = 'Select * from loginInfo WHERE id='+ req.params.id + ';';
+    connection.query(stmt, async function(error, result){
+        if(error) throw error;
+        if (result.length) {
+        	let passwordMatch = await checkPassword(req.body.psw, result[0].password);
+    		if (passwordMatch){
+    			res.redirect('/account/' + req.params.id + '/delete');
+    		} else {
+    			res.render('account', {profile: result[0], error: true});
+    		}
+        }
+    });
+});
+
+/* Delete a ACCOUNT from Profile Page*/
+app.get('/account/:id/delete', isAuthenticated, function(req, res){
+    var stmt = 'DELETE from loginInfo WHERE id='+ req.params.id + ';';
+    connection.query(stmt, function(error, result){
+        if(error) throw error;
+        res.redirect('/');
+    });
+});
+
+/* The handler for the EDIT ACCOUNT route */
+app.get('/account/:id/edit', isAuthenticated, function(req, res){
+    var stmt = 'select * from loginInfo where id=' + req.params.id + ';';
+	connection.query(stmt, function(error, results){
+	    var profile = null;
+	    if(error) throw error;
+	    if (results.length) {
+	        profile = results[0];
+	    }
+	    res.render('account', {profile: profile});
+	});
+});
+
+app.put('/account/:id', isAuthenticated, function(req, res){
+    console.log(req.body);
+    var stmt = 'UPDATE loginInfo SET ' +
+                'username = "'+ req.body.username + '",' +
+                'password = "'+ req.body.password + '"'
+                'WHERE id = ' + req.params.id + ";";
+    connection.query(stmt, function(error, result){
+        if(error) throw error;
+        res.redirect('/');
+    });
+});
 
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -328,17 +390,17 @@ app.get('/pricingSearch', function(req, res){
 ///////////////////////////////////////////////////////////////////
 
 app.get('/account', isAuthenticated, function(req, res){
-    res.render('account_edit');
+    res.render('account');
 });
 
 app.get('/welcome', isAuthenticated, function(req, res){
     var stmt = 'SELECT * FROM videoGames;';
     console.log(stmt);
-    var game = null;
+    var games = null;
     connection.query(stmt, function(error, results){
         if(error) throw error;
-        if(results.length) game = results;
-        res.render('premiumpages/prem_welcome', {game: game, username: req.session.username});
+        if(results.length) games = results;
+        res.render('premiumpages/prem_welcome', {game: games, username: req.session.username});
         });
 });
 
@@ -355,115 +417,19 @@ app.get('/account_edit', isAuthenticated, function(req,res){
 ///////////////////////////////////////////////////////////////////
 
 app.get('/', function(req, res){
-    if(req.session.authenticated){
-        res.render('premiumpages/prem_welcome')
-    } else {
-        res.render('home');
-    }
+    res.render('home');
 });
 
-// <<<<<<< HEAD
-app.get('/game/:title', function(req, res){
-    var stmt = 'SELECT * FROM videoGames WHERE title=\'' + req.params.title + '\';'
+app.get('/gamepicker', function(req, res){
+    var stmt = 'SELECT * FROM videoGames;';
     console.log(stmt);
-    var game = null;
-    connection.query(stmt, function(error, results){
-       if(error) throw error;
-       if(results.length){
-           var game = results[0];
-           res.render('premiumpages/prem_detailG', {game: game});
-       }
-    });
-});
-
-//SHOW INFORMATION
-/* Edit a game record */
-app.get('/game/:title/info', function(req, res){
-    var stmt = 'SELECT * FROM videoGames WHERE title=\'' + req.params.title + '\';';
-    console.log(stmt);
-    connection.query(stmt, function(error, results){
-       if(error) throw error;
-       if(results.length){
-           var game = results[0];
-           res.render('premiumpages/prem_gameInfo', {game: game});
-       }
-    });
-});
-
-/* Edit a game record */
-app.get('/game/:title/edit', function(req, res){
-    var stmt = 'SELECT * FROM videoGames WHERE title=\'' + req.params.title + '\';';
-    console.log(stmt);
-    connection.query(stmt, function(error, results){
-       if(error) throw error;
-       if(results.length){
-           var game = results[0];
-           res.render('premiumpages/prem_gameEdit', {game: game});
-       }
-    });
-});
-
-/* Edit a game record */
-app.put('/premGame/:title', function(req, res){
-    console.log(req.body);
     var games = null;
-    var stmt = 'UPDATE videoGames SET ' +
-                'title = "'+ req.body.title + '",' +
-                'genre = "'+ req.body.genre + '",' +
-                'rating = "'+ req.body.rating + '",' +
-                'pricing = "'+ req.body.pricing + '",' +
-                'companyName = "'+ req.body.companyName + '"' +
-                'WHERE title = ' + req.params.title + ";"
-    //console.log(stmt);
-    connection.query(stmt, function(error, result){
+    connection.query(stmt, function(error, results){
         if(error) throw error;
-        res.redirect('game/' + req.params.title);
+        if(results.length) games = results;
+        res.render('premiumpages/prem_gamePicker', {game: games, username: req.session.username});
     });
 });
-
-/*Create a new game*/
-app.get('/premGame/new', function(req, res){
-    res.render('premiumpages/games_new');
-});
-
-/* Create a new game */
-app.post('/premGame/new', function(req, res){
-    var games = null;
-    connection.query('SELECT COUNT(*) FROM videoGames;', function(error, result){
-        if(error) throw error;
-        if(result.length){
-            var videogame_id = result[0]['COUNT(*)'] + 2;
-            var stmt = 'INSERT INTO videoGames ' +
-                      '(videogame_id, title, genre, rating, pricing, companyName, summary) '+
-                      'VALUES ' +
-                      '(' + 
-                       videogame_id + ',"' +
-                       req.body.title + '","' +
-                       req.body.genre + '","' +
-                       req.body.rating + '","' +
-                       req.body.pricing + '","' +
-                       req.body.companyName + '","' +
-                       req.body.summary + '"' +
-                       ');';
-            console.log(stmt);
-            connection.query(stmt, function(error, result){
-                if(error) throw error;
-                res.redirect('premiumpages/prem_welcome');
-            });
-        };
-    });
-});
-
-/* Delete a game */
-app.get('/game/:title/delete', function(req, res){
-    var stmt = 'DELETE from videoGames WHERE title=\''+ req.params.title + '\';';
-    console.log(stmt);
-    connection.query(stmt, function(error, result){
-        if(error) throw error;
-        res.redirect('premiumpages/prem_welcome');
-    });
-});
-
 
 app.get('*', function(req, res){
     res.render('error');

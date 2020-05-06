@@ -1,24 +1,20 @@
 <%- include ('partials/header'); -%>
 
+<div>
+    <div class="header">
+        <h1 style='font-size: 60px'>SEARCH DEVELOPERS</h1>
+    </div>
+    <div class="topnav">
+      <a href = "/" id = "currentPage">Home</a>
+      <a href = "/account_new">Create Account</a>
+      <a href = "/login">Login</a>
+      <a href = "/searchGames">Search Games</a>
+      <a href = "/searchdevelopers">Search Game Developers</a>
+    </div>   
+</div>
+
 <div class='container'>
     <div class='jumbotron'>
-        <h1 align='center'> Video Game Database Search </h1>
-        <nav align='center'>
-            <ul>
-                <li> <a href = "/" id = "currentPage"> Home </a> </li>
-                <li> <a href = "/account_new"> Create Account</a> </li>
-                <li> <a href = "/searchGames"> Search Games </a> </li>
-                <li> <a href = "/searchdevelopers"> Search Game Developers </a> </li>
-            </ul>
-        </nav>
-        <br><hr><br>
-        
-        <form action='/login' method='GET'>
-            <div class="text-center">
-                <button class='btn btn-primary btn-block'> Login </button>
-            </div>
-        </form>
-        <br><hr><br>
         <div align='center'>
             <%if(!company_name){%>
                 <h1 class='col-sm-14 notfound'>CANNOT FIND Developer!!!</h1>
@@ -32,7 +28,12 @@
                 </div>
             <%}%>
         </div>
-    
+        </br>
+        <form action='/searchdevelopers' method='GET'>
+            <div class="text-center">
+                <button class='btn btn-primary'> Search Again</button>
+            </div>
+        </form>
     </div>
     
     
